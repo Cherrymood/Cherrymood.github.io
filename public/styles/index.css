@@ -1,0 +1,162 @@
+/*-------------Global Styles------------------*/
+body {
+  background-color: #EEEDEB;
+  color: #333; 
+  font-family: 'Lato', serif;
+}
+
+/*-------------Nav-Bar------------------*/
+.menu {
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2000;
+  background-color: #EEEDEB; /* Ensure the background covers the menu area */
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.menu li a {
+  display: block;
+  color: #BB9AB1;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  background-color: #987D9A;
+  color: #EEEDEB;
+}
+
+.menu .icon {
+  display: none;
+  color: #BB9AB1;
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/*-------------Home Page------------------*/
+h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #f0f0f0;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+a:any-link {
+  color: #BB9AB1;
+  text-decoration-line: none;
+}
+
+a:any-link:hover {
+  text-decoration-line: underline;
+  color: #987D9A; }
+
+.name {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+}
+
+.profile-pic {
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin-top: 60px;
+}
+/*-------------Connect Form------------------*/
+.marvel-form-container {
+  background-color: #ffffff4e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  margin: 180px auto;
+}
+
+.marvel-form-container h2 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem; 
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  display: none;
+}
+
+.submit-button {
+  background-color: #987D9A;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #865C79; 
+}
+
+.submit-button:active {
+  background-color: #713D5D; 
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px; 
+}
