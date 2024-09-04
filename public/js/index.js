@@ -1,4 +1,3 @@
-
 function hash12(string, digits) {
     digits = digits || 6;
     var m = Math.pow(10, digits + 1) - 1;
@@ -33,8 +32,10 @@ document.getElementById("marvelForm").addEventListener("submit", function(event)
     const hash = CryptoJS.MD5(ts + privateKey + publicKey);
 
     const req = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=1&offset=${your_Hero_id}`;
+    const req1 = `http://gateway.marvel.com/v1/public/characters/${your_Hero_id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
     fetch(req)
+    
     .then((response) => response.json())
     
     .then((data => {
@@ -46,6 +47,7 @@ document.getElementById("marvelForm").addEventListener("submit", function(event)
         name_hero.innerText = heroInfo.name;
 
         let img = document.createElement("img");
+        img.id = "hero_img";
         img.src = `${heroInfo.thumbnail.path}.${heroInfo.thumbnail.extension}`;
         img.height = 350;
 
@@ -55,7 +57,60 @@ document.getElementById("marvelForm").addEventListener("submit", function(event)
         let form = document.getElementById("marvelForm");
         card[0] = form.parentElement;
         card[0].removeChild(form);
-        
+
+        let btn = document.createElement("button");
+        btn.className = "button-75";
+        btn.innerText = "Show comics with my hero";
+        card[0].appendChild(btn);
+
+        let hero_id = heroInfo.id;
+        const req1 = `http://gateway.marvel.com/v1/public/characters/${hero_id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+
+        document.getElementsByClassName("button-75")[0].addEventListener("click", function(event) {
+            event.preventDefault();
+    
+            fetch(req1)
+            .then((response) => response.json())
+            .then((data) => {
+    
+            const comicsResults = data.data.results;
+            console.log(comicsResults);
+
+            const rdComicsIndex = Math.floor(Math.random() * comicsResults.length);
+    
+            const comics = comicsResults[rdComicsIndex];
+    
+            let img = document.getElementById("hero_img");
+            let btn = document.getElementsByClassName("button-75")[0];
+            card[0].removeChild(img);
+            card[0].removeChild(btn);
+
+            if(comics.title != null)
+            {
+                name_hero.innerText = `Comics: ${comics.title}`;
+            }
+            else{
+                name_hero.innerText = `No data, sorry`;
+            }
+    
+            let img_comics = document.createElement("img");
+            img_comics.src = `${comics.thumbnail.path}.${comics.thumbnail.extension}`;
+            img_comics.height = 350;
+            card[0].appendChild(img_comics);
+
+            let btn1 = document.createElement("button");
+            btn1.className = "button-75";
+            btn1.innerText = "Refresh";
+            card[0].appendChild(btn1);
+
+                document.getElementsByClassName("button-75")[0].addEventListener("click", function(event) {
+                    event.preventDefault();
+                    window.location.reload();
+                });
+
+            })
+        })
+
     }))
     .catch((error) => {
         console.error('Error fetching the hero data:', error);
