@@ -32,9 +32,10 @@ document.getElementById("marvelForm").addEventListener("submit", function(event)
     const hash = CryptoJS.MD5(ts + privateKey + publicKey);
 
     const req = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=1&offset=${your_Hero_id}`;
-    const req1 = `http://gateway.marvel.com/v1/public/characters/${your_Hero_id}/comics`;
+    const req1 = `http://gateway.marvel.com/v1/public/characters/${your_Hero_id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
     fetch(req)
+    
     .then((response) => response.json())
     
     .then((data => {
@@ -63,6 +64,9 @@ document.getElementById("marvelForm").addEventListener("submit", function(event)
         btn.innerText = "Show comics with my hero";
         card[0].appendChild(btn);
 
+        let hero_id = heroInfo.id;
+        const req1 = `http://gateway.marvel.com/v1/public/characters/${hero_id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+
         document.getElementsByClassName("button-75")[0].addEventListener("click", function(event) {
             event.preventDefault();
     
@@ -70,20 +74,20 @@ document.getElementById("marvelForm").addEventListener("submit", function(event)
             .then((response) => response.json())
             .then((data) => {
     
-            const rdComicsIndex = Math.abs(Math.random() * results.Length);
+            const comicsResults = data.data.results;
+            console.log(comicsResults);
+
+            const rdComicsIndex = Math.floor(Math.random() * comicsResults.length);
     
-            const comics = data.data.results[rdComicsIndex];
+            const comics = comicsResults[rdComicsIndex];
+            console.log(comics);
     
-            let card = document.getElementsByClassName("card");
-            let img = document.getElementsById("hero_img");
-            let btn = document.getElementsByClassName("button-75");
-    
-            card[0] = img.parentElement;
-            card[0] = btn[0].parentElement;
+            let img = document.getElementById("hero_img");
+            let btn = document.getElementsByClassName("button-75")[0];
             card[0].removeChild(img);
-            card[0].removeChild(btn[0]);
+            card[0].removeChild(btn);
     
-            name_hero.innerText = `${comics.title}`;
+            name_hero.innerText = `Comic: ${comics.title}`;
             console.log(comics.title);
     
             
