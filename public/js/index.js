@@ -59,7 +59,6 @@ document.getElementById("marvelForm").addEventListener("submit", function(event)
         card[0].removeChild(form);
 
         let btn = document.createElement("button");
-        btn.type = "submit";
         btn.className = "button-75";
         btn.innerText = "Show comics with my hero";
         card[0].appendChild(btn);
@@ -80,21 +79,35 @@ document.getElementById("marvelForm").addEventListener("submit", function(event)
             const rdComicsIndex = Math.floor(Math.random() * comicsResults.length);
     
             const comics = comicsResults[rdComicsIndex];
-            console.log(comics);
     
             let img = document.getElementById("hero_img");
             let btn = document.getElementsByClassName("button-75")[0];
             card[0].removeChild(img);
             card[0].removeChild(btn);
+
+            if(comics.title != null)
+            {
+                name_hero.innerText = `Comics: ${comics.title}`;
+            }
+            else{
+                name_hero.innerText = `No data, sorry`;
+            }
     
-            name_hero.innerText = `Comic: ${comics.title}`;
-            console.log(comics.title);
-    
-            
-    
-    
-    
-    
+            let img_comics = document.createElement("img");
+            img_comics.src = `${comics.thumbnail.path}.${comics.thumbnail.extension}`;
+            img_comics.height = 350;
+            card[0].appendChild(img_comics);
+
+            let btn1 = document.createElement("button");
+            btn1.className = "button-75";
+            btn1.innerText = "Refresh";
+            card[0].appendChild(btn1);
+
+                document.getElementsByClassName("button-75")[0].addEventListener("click", function(event) {
+                    event.preventDefault();
+                    window.location.reload();
+                });
+
             })
         })
 
