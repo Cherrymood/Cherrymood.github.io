@@ -55,3 +55,6 @@ Known Issues
 
 API Rate Limits: The Marvel API has rate limits that may affect data retrieval if too many requests are made in a short period.
 Error Handling: Limited error handling is implemented. API request failures may result in no data being displayed.
+
+![screenshot](./public/images/Marvel.png)
+![screenshot](./public/images/Marvel_res.png)
