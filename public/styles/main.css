@@ -6,27 +6,33 @@
 body {
   background: url("../images/1229669-marvel-villains-wallpaper-1920x1080-for-mobile.jpg");
   background-size: cover;
+  background-position: center;
   min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
   box-sizing: border-box;
+  position: relative;
 }
+
 h1 {
-  color: #f0f0f0; /* Softer white color */
-  font-family: "Titan One", sans-serif; /* Ensure fallback font */
-  font-size: 2.5rem; /* Increase font size */
-  letter-spacing: 1.5px; /* Add letter spacing for readability */
+  color: #ffffff;
+  font-family: "Titan One", sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 1.5px;
   margin-bottom: 40px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* Subtle shadow for contrast */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 10);
 }
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #c62424;
+}
+
 .card {
-  background: #3c67e3;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: rgba(51, 58, 77, 0.85);
   width: var(--card-width);
   height: var(--card-height);
   padding: 3px;
@@ -36,164 +42,39 @@ h1 {
   align-items: center;
   text-align: center;
   display: flex;
+  flex-direction: column;
   font-size: 1.5em;
-  color: rgb(88 199 250 / 0%);
-  font-family: "Gloria Hallelujah", cursive;
-}
-
-.card::before {
-  content: "";
-  width: 104%;
-  height: 102%;
-  border-radius: 8px;
-  background-image: linear-gradient(
-    var(--rotate),
-    #5ddcff,
-    #3c67e3 43%,
-    #4e00c2
-  );
-  position: absolute;
-  z-index: -1;
-  top: -1%;
-  left: -2%;
-  animation: spin 2.5s linear infinite;
-}
-
-.card::after {
-  position: absolute;
-  content: "";
-  top: calc(var(--card-height) / 6);
-  left: 0;
-  right: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  transform: scale(0.8);
-  filter: blur(calc(var(--card-height) / 6));
-  background-image: linear-gradient(
-    var(--rotate),
-    #5ddcff,
-    #3c67e3 43%,
-    #4e00c2
-  );
-  opacity: 1;
-  transition: opacity 0.5s;
-  animation: spin 2.5s linear infinite;
-}
-
-@property --rotate {
-  syntax: "<angle>";
-  initial-value: 132deg;
-  inherits: false;
-}
-
-@keyframes spin {
-  0% {
-    --rotate: 0deg;
-  }
-  100% {
-    --rotate: 360deg;
-  }
-}
-
-.card {
-  background: #3c67e3;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: var(--card-width);
-  height: var(--card-height);
-  padding: 3px;
-  position: relative;
-  border-radius: 6px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  display: flex;
-  flex-direction: column; /* Ensure vertical stacking of elements */
-  font-size: 1.5em;
-  color: rgb(88 199 250 / 0%);
+  color: rgba(246, 246, 246, 0.9);
   font-family: "Gloria Hallelujah", cursive;
 }
 
 .button-container {
-  margin-left: 100px; /* Adjust the spacing between the image and the button */
-  text-align: center; /* Center the button horizontally */
-  width: 100%; /* Ensure the container spans the card's width */
+  margin-left: 100px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-a {
-  color: #212534;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin-top: 2rem;
-}
-
-.user {
-  color: white;
-  font-size: 24px;
-  font-family: "Titan One", cursive;
-}
-
-/* CSS */
 .button-75 {
   margin-top: 150px;
-  margin-left: 0rem;
   align-items: center;
-  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+  background-image: linear-gradient(135deg, #f0306d 40%, #fc894d);
   border: 0;
   border-radius: 10px;
-  box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  font-family: "Codec cold",sans-serif;
+  font-family: "Codec cold", sans-serif;
   font-size: 16px;
   font-weight: 700;
   height: 54px;
   justify-content: center;
   letter-spacing: .4px;
-  line-height: 1;
   max-width: 100%;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 3px;
-  text-decoration: none;
   text-transform: uppercase;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-75:active {
-  outline: 0;
-}
-
-.button-75:hover {
-  outline: 0;
-}
-
-.button-75 span {
-  transition: all 200ms;
-}
-
-.button-75:hover span {
-  transform: scale(.9);
-  opacity: .75;
-}
-
-@media screen and (max-width: 991px) {
-  .button-75 {
-    font-size: 15px;
-    height: 50px;
-  }
-
-  .button-75 span {
-    line-height: 50px;
-  }
 }
 
 .form-group {
@@ -203,18 +84,96 @@ a {
 }
 
 label {
-  font-size: 1.5em; /* Smaller font size */
-  margin-bottom: 30px; /* Less space between label and input */
-
+  font-size: 1.5em;
+  margin-bottom: 30px;
 }
 
 input {
-  padding: 5px; /* Smaller padding for a more compact input */
-  font-size: 0.9em; /* Slightly smaller font size */
-  border-radius: 3px; /* Smaller border radius */
+  padding: 5px;
+  font-size: 0.9em;
+  border-radius: 3px;
   border: 1px solid #ccc;
 }
 
-.hero_img{
+.hero_img {
   margin-top: 40px;
+}
+
+#card {
+  display: flex;
+  flex-direction: row;
+  background-size: cover;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  justify-content: center; /* Center items horizontally */
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  padding: 0; /* Remove padding to avoid pushing content outside */
+  background-color: #f0f0f0; /* Background color for the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+  box-sizing: border-box; /* Include padding and border in width and height */
+  overflow: auto; /* Allow scrolling if content overflows */
+}
+
+.comic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(33.333% - 40px); /* Responsive width with margins */
+  margin: 20px; /* Margin between each comic */
+  background-color: white; /* Background color for each comic */
+  padding: 10px; /* Padding inside each comic container */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+  text-align: center; /* Center-align text inside the container */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+#comics_pict {
+  width: 100%; /* Make the image fill the width of the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px 10px 0 0; /* Round top corners of the image */
+}
+
+#comics_title {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+  height: 40px; /* Fixed height to ensure consistency */
+  line-height: 1.2em; /* Line height to manage text spacing */
+  text-align: center; /* Center-align text */
+  display: -webkit-box; /* Flexbox-like behavior */
+  -webkit-line-clamp: 2; /* Limit to two lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Ellipsis for overflowed text */
+}
+
+#refresh{
+  margin-bottom: 50px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .comic-container {
+    width: calc(25% - 40px); /* Adjust for larger screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .comic-container {
+    width: calc(33.333% - 40px); /* Adjust for medium screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .comic-container {
+    width: calc(50% - 40px); /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .comic-container {
+    width: calc(100% - 40px); /* Single column for very small screens */
+  }
 }
