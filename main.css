@@ -4,7 +4,7 @@
 }
 
 body {
-  background: url("../images/1229669-marvel-villains-wallpaper-1920x1080-for-mobile.jpg");
+  background: url("./public/images/1229669-marvel-villains-wallpaper-1920x1080-for-mobile.jpg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
