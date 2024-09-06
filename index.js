@@ -13,18 +13,16 @@ function hash12(string, digits) {
     event.preventDefault();
 
     const name = document.getElementById("usersName").value;
+    console.log(typeof(name));
 
     const name_hash = CryptoJS.MD5(name).toString(CryptoJS.enc.Hex);
     console.log(name_hash);
 
     let your_Hero_id = hash12(name_hash, 4);
 
-    // Adjust the hero ID to be within the range
-    if (your_Hero_id >= 1564) {
-        while (your_Hero_id > 1564) {
-            your_Hero_id = Math.floor(your_Hero_id / 10); // Floor to ensure it's an integer
-        }
-    }
+    const lengthOfResults = 1564;
+
+    your_Hero_id %= 1564;
 
     console.log("Hero hash ID:", your_Hero_id);
 
@@ -33,6 +31,7 @@ function hash12(string, digits) {
     const ts = Date.now().toString();
     const hash = CryptoJS.MD5(ts + privateKey + publicKey);
     console.log(`hash:` + hash);
+    console.log(typeof(ts + privateKey + publicKey));
 
     // Fetch the hero information
     const req = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=1&offset=${your_Hero_id}`;
@@ -100,7 +99,11 @@ function hash12(string, digits) {
                             let img_comics = document.createElement("img");
                             img_comics.id = "comics_pict";
                             img_comics.src = `${comics.thumbnail.path}.${comics.thumbnail.extension}`;
+                            if (img_comics.src.includes("image_not_found")) {
+                                return;
+                            }
                             img_comics.height = 300;
+
                         
                             // Create the paragraph element for the title
                             let par = document.createElement("p");
