@@ -13,10 +13,8 @@ function hash12(string, digits) {
     event.preventDefault();
 
     const name = document.getElementById("usersName").value;
-    console.log(typeof(name));
 
     const name_hash = CryptoJS.MD5(name).toString(CryptoJS.enc.Hex);
-    console.log(name_hash);
 
     let your_Hero_id = hash12(name_hash, 4);
 
@@ -24,23 +22,18 @@ function hash12(string, digits) {
 
     your_Hero_id %= 1564;
 
-    console.log("Hero hash ID:", your_Hero_id);
-
     const publicKey = "5e0d9e41a28b77598bbf3cf127e7f1bb";
     const privateKey = "f3fdf1d223338e7b335388875bb5a115329a8ea2";
     const ts = Date.now().toString();
     const hash = CryptoJS.MD5(ts + privateKey + publicKey);
-    console.log(`hash:` + hash);
-    console.log(typeof(ts + privateKey + publicKey));
 
     // Fetch the hero information
-    const req = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=1&offset=${your_Hero_id}`;
+    const req = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=1&offset=${your_Hero_id}`;
     
     fetch(req)
     .then((response) => response.json())
     .then((data => {
         const heroInfo = data.data.results[0];
-        console.log("Hero Info:", heroInfo);
 
         let name_hero = document.getElementById("heroName");
         name_hero.innerText = heroInfo.name;
@@ -66,7 +59,7 @@ function hash12(string, digits) {
         btn.addEventListener("click", function(event) {
             event.preventDefault();
 
-            const comicsReq = `http://gateway.marvel.com/v1/public/characters/${heroInfo.id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+            const comicsReq = `https://gateway.marvel.com/v1/public/characters/${heroInfo.id}/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
             fetch(comicsReq)
             .then((response) => response.json())
@@ -102,7 +95,7 @@ function hash12(string, digits) {
                             if (img_comics.src.includes("image_not_found")) {
                                 return;
                             }
-                            img_comics.height = 300;
+                            img_comics.height = 150;
 
                         
                             // Create the paragraph element for the title
