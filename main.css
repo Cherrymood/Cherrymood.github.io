@@ -169,11 +169,15 @@ input {
 @media (max-width: 600px) {
   .comic-container {
     width: calc(50% - 40px); /* Adjust for smaller screens */
+
   }
 }
 
 @media (max-width: 400px) {
   .comic-container {
     width: calc(100% - 40px); /* Single column for very small screens */
+    h1{
+      font-size: 1.5rem;
+    }
   }
 }
