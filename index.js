@@ -12,7 +12,8 @@ async function hash12(string, digits) {
 document.getElementById("marvelForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    const name = document.getElementById("usersName").value;
+    let name = document.getElementById("usersName").value; // Normalization of name
+    name = name.toLowerCase().trim(); // Normalize
     console.log(`name: ${name}`);
 
     const name_hash = CryptoJS.MD5(name).toString(CryptoJS.enc.Hex);
