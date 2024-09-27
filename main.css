@@ -169,7 +169,10 @@ input {
 @media (max-width: 600px) {
   .comic-container {
     width: calc(50% - 40px); /* Adjust for smaller screens */
-
+  }
+  h1 {
+    font-size: 2em;
+    align-items: center;
   }
 }
 
@@ -177,7 +180,8 @@ input {
   .comic-container {
     width: calc(100% - 40px); /* Single column for very small screens */
   }
-  #heroName {
-    font-size: 1.5rem;
+  h1 {
+    font-size: 2em;
+    align-items: center;
   }
 }
